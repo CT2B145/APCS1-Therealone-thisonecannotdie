@@ -30,15 +30,11 @@ public class Calculate {
 	return degrees;
 
 	
-	}public static double discriminant(double a, double b, double c){
-		double answerofa = (b*b)-4*a*c;
-		return answerofa;
-	
-	}public static int toImproperFrac(int cookie, int are, int cool){
+	}public static double discriminant{double aa, double nb, double cc){
+		double answerofa = (a*a);
+				
 		
-		ok = cookie
-		String 
-		
+	}
 	
 	}
 	
