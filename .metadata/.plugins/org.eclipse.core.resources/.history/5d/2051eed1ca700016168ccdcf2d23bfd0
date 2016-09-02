@@ -50,8 +50,8 @@ public class Calculate {
 		return foils;
 		
 	}public static boolean isDivisibleBy( int DivInput, int Divinputt){
-		int number = DivInput%Divinputt;
-		int number1 = Divinputt%DivInput;
+		int number = DivInput/Divinputt;
+		int number1 = Divinputt/DivInput;
 		int newnumb =  number1+number;
 		
 	if (newnumb  == 0){
@@ -90,27 +90,18 @@ public class Calculate {
 		}else if(HRC>GaryJ && Trump>HRC){
 			System.out.println("Trump is still great, despite he is less!");
 			return true;
-		}else if(Trump<GaryJ && GaryJ>HRC){
+		}else if((Trump<GaryJ && GaryJ>HRC){
 		System.out.println("America is saved!");
 			return true;
 			
 		}else{
 			return false;
 		}
-		}
-		public static boolean min(int Trump, int HRC){	
-			if(Trump>HRC){
-				System.out.println("Trump is greater!!!");
-			return true;
-			}else{
-				System.out.println("Trump is still great, despite he is less!");
-				return false;
-			}
-		}
+		
 
 		
 		}
-	
+	}
 
 	
 		
