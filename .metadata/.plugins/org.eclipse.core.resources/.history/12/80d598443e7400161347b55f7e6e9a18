@@ -14,19 +14,12 @@ public class Calculate {
 		return answer;
 	}
 	
-	public static double average (double cookies,double cookies2){
+	public static double average (double inputnumber, double otherinput, double inputofinputs){
 		double answer;
 		double addingtogether;
-		addingtogether = cookies + cookies2;
+		addingtogether = inputnumber + otherinput + inputofinputs;
 		answer  = addingtogether/2;
 		return answer;
-	}
-	public static double average (double inputnumber, double otherinput, double inputofinputs){
-			double answer;
-			double addingtogether;
-			addingtogether = inputnumber + otherinput + inputofinputs;
-			answer  = addingtogether/2;
-			return answer;
 	}
 	public static double toDegrees(double input) {
 		double degrees = input*180/3.14159;

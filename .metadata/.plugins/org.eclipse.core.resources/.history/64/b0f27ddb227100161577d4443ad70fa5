@@ -14,19 +14,12 @@ public class Calculate {
 		return answer;
 	}
 	
-	public static double average (double cookies,double cookies2){
+	public static double average (double inputnumber, double otherinput, double inputofinputs){
 		double answer;
 		double addingtogether;
-		addingtogether = cookies + cookies2;
+		addingtogether = inputnumber + otherinput + inputofinputs;
 		answer  = addingtogether/2;
 		return answer;
-	}
-	public static double average (double inputnumber, double otherinput, double inputofinputs){
-			double answer;
-			double addingtogether;
-			addingtogether = inputnumber + otherinput + inputofinputs;
-			answer  = addingtogether/2;
-			return answer;
 	}
 	public static double toDegrees(double input) {
 		double degrees = input*180/3.14159;
@@ -91,19 +84,18 @@ public class Calculate {
 	}
 	
 	public static double max(double Trump, double HRC,double GaryJ){
-	 int nothing = 0;
+		System.outut.println("Well, no one won");
 		if(Trump>GaryJ && Trump>HRC){
 			System.out.println("Trump is greater!!!");
 		return Trump;
 		}else if(HRC>GaryJ && Trump>HRC){
 			System.out.println("Trump is still great, despite he is less!");
 			return HRC;
-		}else if (Trump<GaryJ && GaryJ>HRC){
+		}else if(Trump<GaryJ && GaryJ>HRC){
 		System.out.println("America is saved!");
 			return GaryJ;
 		
 		}
-		return nothing;
 		}
 		public static int min(int Trump, int HRC){	
 			if(Trump>HRC){
