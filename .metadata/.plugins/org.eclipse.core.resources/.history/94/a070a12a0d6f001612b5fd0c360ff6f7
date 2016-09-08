@@ -1,6 +1,0 @@
-
-public class DoMath {
-	public static void mant(String[] args){
-		
-	}
-}

@@ -128,25 +128,13 @@ public class Calculate {
 				}
 		}
 		public static int factorial(int beingfan){
-			for(int intial = beingfan; beingfan<0; intial--){
-				intial = intial*(intial-1);
+			for{int intial = beingfan; beingfan<0; intial--);
 			
 				
 			}
-			return intial;
-			
-		}
-		public static boolean isPrime(int n) {
-		    for(int i=2;i<n;i++) {
-		        if(n%i==0)
-		            return false;
-		    }
-		    return true;
-		    
-		  
 		}
 		}
-
+}
 
 	
 		

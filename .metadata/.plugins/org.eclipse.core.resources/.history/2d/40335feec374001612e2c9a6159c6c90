@@ -121,32 +121,10 @@ public class Calculate {
 			double answer = Ben/100.0;
 			return answer;
 		}
-		public static double exponent(double inter, int cookie){
-			while(cookie<=0){
-				double expon = (inter = inter*inter); 
-				return expon;
-				}
+		public static int exponent(double inter, int cookie)
+		
 		}
-		public static int factorial(int beingfan){
-			for(int intial = beingfan; beingfan<0; intial--){
-				intial = intial*(intial-1);
-			
-				
-			}
-			return intial;
-			
-		}
-		public static boolean isPrime(int n) {
-		    for(int i=2;i<n;i++) {
-		        if(n%i==0)
-		            return false;
-		    }
-		    return true;
-		    
-		  
-		}
-		}
-
+	
 
 	
 		
