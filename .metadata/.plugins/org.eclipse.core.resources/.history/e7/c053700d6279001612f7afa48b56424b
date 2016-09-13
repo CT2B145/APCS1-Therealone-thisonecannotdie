@@ -131,9 +131,9 @@ public class Calculate {
 			for(int intial = beingfan; beingfan<0; intial--){
 				intial = intial*(intial-1);
 			
-				return intial;
+				
 			}
-			
+			return intial;
 	
 		}
 		public static boolean isPrime(int n) {
@@ -145,25 +145,27 @@ public class Calculate {
 		    
 		  
 		}
-		public static int gcf(int a, int b){
-		while(a!=0 && b!=0){
-		 int c = b;
-		 b = a%b;
-		    a = c; }
-          int s = Math.abs(a);
+		public static int gcf(int a, int b){
+		while(a!=0 && b!=0){
+		     int c = b;
+		     b = a%b;
+		     a = c;
+		  }
+          	int s = Math.abs(a);
           	int t = Math.abs(b);
 				return s+t; 
 		}
-
+}
 		public static double sqrt(double unsqt){
-			double qsqrt = Math.sqrt(unsqt);
+			double sqrt = Math.sqrt(unsqt);
 			return unsqt;
 		
 		
 		
 		}
 		}
-		
+		}
+
 
 	
 		

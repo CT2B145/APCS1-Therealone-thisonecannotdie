@@ -154,16 +154,17 @@ public class Calculate {
           	int t = Math.abs(b);
 				return s+t; 
 		}
-
+}
 		public static double sqrt(double unsqt){
-			double qsqrt = Math.sqrt(unsqt);
+			double sqrt = Math.sqrt(unsqt);
 			return unsqt;
 		
 		
 		
 		}
 		}
-		
+		}
+
 
 	
 		
