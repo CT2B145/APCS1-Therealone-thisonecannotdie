@@ -134,7 +134,7 @@ public class Calculate {
 				
 			}
 			return intial;
-			
+	
 		}
 		public static boolean isPrime(int n) {
 		    for(int i=2;i<n;i++) {
@@ -144,6 +144,25 @@ public class Calculate {
 		    return true;
 		    
 		  
+		}
+		public static int gcf(int a, int b){
+		while(a!=0 && b!=0){
+		     int c = b;
+		     b = a%b;
+		     a = c;
+		  }
+          	int s = Math.abs(a);
+          	int t = Math.abs(b);
+				return s+t; 
+		}
+}
+		public static double sqrt(double unsqt){
+			double sqrt = Math.sqrt(unsqt);
+			return unsqt;
+		
+		
+		
+		}
 		}
 		}
 
