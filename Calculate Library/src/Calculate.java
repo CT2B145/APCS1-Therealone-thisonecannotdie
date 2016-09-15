@@ -1,3 +1,4 @@
+import org.omg.CORBA.ExceptionList;
 
 public class Calculate {
 
@@ -133,6 +134,7 @@ public class Calculate {
 			
 				return intial;
 			}
+			return beingfan;
 			
 	
 		}
@@ -148,7 +150,7 @@ public class Calculate {
 		public static int gcf(int a, int b){
 		while(a!=0 && b!=0){
 		 int c = b;
-		 b = a%b;
+		    b = a%b;
 		    a = c; }
           int s = Math.abs(a);
           	int t = Math.abs(b);
@@ -161,6 +163,14 @@ public class Calculate {
 		
 		
 		
+		}
+		public static String quadForm(int a, int b, int c, String n){
+			if (Math.sqrt((b*b)-(4*a*c)) <= 0){
+				System.out.println("There are no real roots");
+			}else{
+				
+			}
+			
 		}
 		}
 		

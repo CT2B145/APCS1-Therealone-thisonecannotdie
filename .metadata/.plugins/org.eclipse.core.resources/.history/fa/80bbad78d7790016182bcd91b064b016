@@ -1,3 +1,4 @@
+import org.omg.CORBA.ExceptionList;
 
 public class Calculate {
 
@@ -122,6 +123,7 @@ public class Calculate {
 			return answer;
 		}
 		public static double exponent(double inter, int cookie){
+			throw EmptyStackException;
 			while(cookie<=0){
 				double expon = (inter = inter*inter); 
 				return expon;
@@ -131,13 +133,43 @@ public class Calculate {
 			for(int intial = beingfan; beingfan<0; intial--){
 				intial = intial*(intial-1);
 			
-				
+				return intial;
 			}
-		public static int isPrime(int i){
-			if()
+			return beingfan;
+			
+	
+		}
+		public static boolean isPrime(int n) {
+		    for(int i=2;i<n;i++) {
+		        if(n%i==0)
+		            return false;
+		    }
+		    return true;
+		    
+		  
+		}
+		public static int gcf(int a, int b){
+		while(a!=0 && b!=0){
+		 int c = b;
+		    b = a%b;
+		    a = c; }
+          int s = Math.abs(a);
+          	int t = Math.abs(b);
+				return s+t; 
+		}
+
+		public static double sqrt(double unsqt){
+			double qsqrt = Math.sqrt(unsqt);
+			return unsqt;
+		
+		
+		
+		}
+		public static String quadForm(int i, int b, int c){
+			
 		}
 		}
-}
+		
 
 	
 		
