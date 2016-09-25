@@ -7,8 +7,8 @@ public class DoMath {
 		System.out.println(Calculate.toDegrees(30));
 		System.out.println(Calculate.toRadians(6));
 		System.out.println(Calculate.discriminant(0, 0, 0));
-		System.out.println(Calculate.toImproperFrac(3,1,2));
-		System.out.println(Calculate.MixedNum(3,2));
+		System.out.println(Calculate.toImproperFrac(4,6,7));
+		System.out.println(Calculate.MixedNum(4,7));
 		System.out.println(Calculate.foil(10, 4, 3, "n"));
 		System.out.println(Calculate.isDivisibleBy(4, 86));
 		System.out.println(Calculate.absValue(88));
@@ -21,6 +21,6 @@ public class DoMath {
 		System.out.println(Calculate.isPrime(5));
 		System.out.println(Calculate.gcf(5, 0));
 		System.out.println(Calculate.sqrt(5));
-		System.out.println(Calculate.quadForm(1, 3, 2));
+		System.out.println(Calculate.quadForm(5, 0, 0));
 	}
 }

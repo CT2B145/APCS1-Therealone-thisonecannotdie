@@ -44,7 +44,7 @@ public class Calculate {
 	
 	}public static String toImproperFrac(int a, int b, int c){
 		
-		int addthemup = (a*c)+b;
+		int addthemup = (a*c)+a;
 		
 		String numberAsString = addthemup +" / " + c;
 		return numberAsString;
@@ -95,7 +95,7 @@ public class Calculate {
 	}
 	
 	public static double max(double Trump, double HRC,double GaryJ){
-	 int nothing = 0;// political easter eggs :D
+	 int nothing = 0;
 		if(Trump>GaryJ && Trump>HRC){
 			//System.out.println("Trump is greater!!!");
 		return Trump;
@@ -110,7 +110,7 @@ public class Calculate {
 		return nothing;
 		}
 		public static int min(int i, int k){	
-			if(i<k){
+			if(i>k){
 				//System.out.println("Trump is greater!!!");
 			return i;
 			}else{
@@ -186,19 +186,19 @@ public class Calculate {
 			if (discrmin <= 0){
 				System.out.println("There are no real roots");
 			}else{
-				double root1 = (-b)+ sqrt(discrmin)/2;  
-				double root2 = (-b)- sqrt(discrmin)/2;  
+				double root1 = ((b-(2*b))+ sqrt(discrmin))/2;  
+				double root2 = ((b-(2*b))- sqrt(discrmin))/2;  
 				if (root1==root2){
 					int newroot1 = (int) round2(root1);
 					String finalrootboth = Integer.toString(newroot1);
 					
 					return finalrootboth;
 				}
-				int newroot2 = (int)round2(root2);
-				int newroot1 = (int)round2(root1);
+				double newroot2 = round2(root2);
+				double newroot1 = round2(root1);
 				//String finalroot1 = Integer.toString(newroot1);
 				//String finalroot2 = Integer.toString(newroot2);
-				return newroot1 + "  and " + newroot2;
+				return newroot1 + "and" + newroot2;
 			}
 			return "";
 		}

@@ -95,7 +95,7 @@ public class Calculate {
 	}
 	
 	public static double max(double Trump, double HRC,double GaryJ){
-	 int nothing = 0;// political easter eggs :D
+	 int nothing = 0;
 		if(Trump>GaryJ && Trump>HRC){
 			//System.out.println("Trump is greater!!!");
 		return Trump;
@@ -110,7 +110,7 @@ public class Calculate {
 		return nothing;
 		}
 		public static int min(int i, int k){	
-			if(i<k){
+			if(i>k){
 				//System.out.println("Trump is greater!!!");
 			return i;
 			}else{
@@ -186,8 +186,8 @@ public class Calculate {
 			if (discrmin <= 0){
 				System.out.println("There are no real roots");
 			}else{
-				double root1 = (-b)+ sqrt(discrmin)/2;  
-				double root2 = (-b)- sqrt(discrmin)/2;  
+				double root1 = ((b-(2*b))+ sqrt(discrmin))/2;  
+				double root2 = ((b-(2*b))- sqrt(discrmin))/2;  
 				if (root1==root2){
 					int newroot1 = (int) round2(root1);
 					String finalrootboth = Integer.toString(newroot1);
@@ -198,7 +198,7 @@ public class Calculate {
 				int newroot1 = (int)round2(root1);
 				//String finalroot1 = Integer.toString(newroot1);
 				//String finalroot2 = Integer.toString(newroot2);
-				return newroot1 + "  and " + newroot2;
+				return newroot1 + "and" + newroot2;
 			}
 			return "";
 		}

@@ -95,7 +95,7 @@ public class Calculate {
 	}
 	
 	public static double max(double Trump, double HRC,double GaryJ){
-	 int nothing = 0;// political easter eggs :D
+	 int nothing = 0;
 		if(Trump>GaryJ && Trump>HRC){
 			//System.out.println("Trump is greater!!!");
 		return Trump;
@@ -110,7 +110,7 @@ public class Calculate {
 		return nothing;
 		}
 		public static int min(int i, int k){	
-			if(i<k){
+			if(i>k){
 				//System.out.println("Trump is greater!!!");
 			return i;
 			}else{
