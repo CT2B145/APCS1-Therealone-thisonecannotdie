@@ -1,4 +1,4 @@
-import org.omg.CORBA.ExceptionList;
+
 
 public class Calculate {
 
@@ -15,19 +15,19 @@ public class Calculate {
 		return answer;
 	}
 	
-	public static double average (double cookies,double cookies2){
-		double answer;
+	public static double average (double x,double y){
+		double averageanswer;
 		double addingtogether;
-		addingtogether = cookies + cookies2;
-		answer  = addingtogether/2;
-		return answer;
+		addingtogether = x + y;
+		averageanswer  = addingtogether/2;
+		return averageanswer;
 	}
 	public static double average (double inputnumber, double otherinput, double inputofinputs){
-			double answer;
+			double avg;
 			double addingtogether;
 			addingtogether = inputnumber + otherinput + inputofinputs;
-			answer  = addingtogether/2;
-			return answer;
+			avg  = addingtogether/2;
+			return avg;
 	}
 	public static double toDegrees(double input) {
 		double degrees = input*180/3.14159;
@@ -42,17 +42,19 @@ public class Calculate {
 		double answerofa = (b*b)-4*a*c;
 		return answerofa;
 	
-	}public static String toImproperFrac(int cookie, int are, int cool){
+	}public static String toImproperFrac(int a, int b, int c){
 		
-		int addthemup = (cookie*cool)+are;
+		int addthemup = (a*b)+c;
 		
-		String numberAsString = addthemup +" + " + are;
+		String numberAsString = addthemup +" + " + b;
 		return numberAsString;
 	
-	}public static String MixedNum (int inputter, int inputterrr ){
-		int cookie = inputter/inputterrr;
-		String number1 = Integer.toString(cookie);
-		return number1;
+	}public static String MixedNum (int a, int j){
+		
+		int firstnumb = a/j;
+		int numb = a%j;
+		String finalMixed = firstnumb + " " + numb + "/" + j;
+		return finalMixed;
 	}public static String foil (int a, int b, int c, String n){
 		String foils = a+n+"^2 + "+b+n+" - "+c;
 		return foils;
@@ -94,39 +96,40 @@ public class Calculate {
 	public static double max(double Trump, double HRC,double GaryJ){
 	 int nothing = 0;
 		if(Trump>GaryJ && Trump>HRC){
-			System.out.println("Trump is greater!!!");
+			//System.out.println("Trump is greater!!!");
 		return Trump;
 		}else if(HRC>GaryJ && Trump>HRC){
-			System.out.println("Trump is still great, despite he is less!");
+			//System.out.println("Trump is still great, despite he is less!");
 			return HRC;
 		}else if (Trump<GaryJ && GaryJ>HRC){
-		System.out.println("America is saved!");
+		//System.out.println("America is saved!");
 			return GaryJ;
 		
 		}
 		return nothing;
 		}
-		public static int min(int Trump, int HRC){	
-			if(Trump>HRC){
-				System.out.println("Trump is greater!!!");
-			return Trump;
+		public static int min(int i, int k){	
+			if(i>k){
+				//System.out.println("Trump is greater!!!");
+			return i;
 			}else{
-				System.out.println("Trump is still great, despite he is less!");
-				return HRC;
+				//System.out.println("Trump is still great, despite he is less!");
+				return k;
 			}
 		}
-		public static double round2(double Carson){
-			double Doctor = Carson * 100.0;
-			double Ben = Doctor +.5;
-			Ben = (int)Ben;
-			double answer = Ben/100.0;
+		public static double round2(double a){
+			double b = a * 100.0;
+			double y = b +.5;
+			y = (int)y;
+			double answer = y/100.0;
 			return answer;
 		}
 		public static double exponent(double inter, int cookie){
-			while(cookie<=0){
-				double expon = (inter = inter*inter); 
-				return expon;
+			double expon = (inter = inter*inter); 
+			if(cookie<=0){
+				return (Double) null;  
 				}
+			return expon;
 		}
 		public static int factorial(int beingfan){
 			for(int intial = beingfan; beingfan<0; intial--){
@@ -165,12 +168,28 @@ public class Calculate {
 		
 		}
 		public static String quadForm(int a, int b, int c, String n){
-			if (Math.sqrt((b*b)-(4*a*c)) <= 0){
+			double aa = (double)a;
+			double bb = (double)b;
+			double cc = (double)c
+;			double discrmin = discriminant(aa,bb,cc);
+			if (discrmin <= 0){
 				System.out.println("There are no real roots");
 			}else{
-				
+				double root1 = ((b-(2*b))+ sqrt(discrmin))/2;  
+				double root2 = ((b-(2*b))- sqrt(discrmin))/2;  
+				if (root1==root2){
+					int newroot1 = (int) round2(root1);
+					String finalrootboth = Integer.toString(newroot1);
+					
+					return finalrootboth;
+				}
+				double newroot2 = round2(root2);
+				double newroot1 = round2(root1);
+				//String finalroot1 = Integer.toString(newroot1);
+				//String finalroot2 = Integer.toString(newroot2);
+				return newroot1 + "and" + newroot2;
 			}
-			
+			return null;
 		}
 		}
 		

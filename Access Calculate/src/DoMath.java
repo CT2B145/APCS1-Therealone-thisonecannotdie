@@ -15,6 +15,12 @@ public class DoMath {
 		System.out.println(Calculate.max(34,45));
 		System.out.println(Calculate.max(34,45,67));
 		System.out.println(Calculate.min(34,78));
-		System.out.println(Calculate.square(5));
+		System.out.println(Calculate.round2(5));
+		System.out.println(Calculate.exponent(5, 0));
+		System.out.println(Calculate.factorial(5));
+		System.out.println(Calculate.isPrime(5));
+		System.out.println(Calculate.gcf(5, 0));
+		System.out.println(Calculate.sqrt(5));
+		System.out.println(Calculate.quadForm(5, 0, 0, null));
 	}
 }
