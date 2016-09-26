@@ -1,8 +1,4 @@
-/*
- * Mitchell Pon
- * Period 1
- * 
- */
+
 
 public class Calculate {
 
@@ -27,7 +23,6 @@ public class Calculate {
 		return averageanswer;
 	}
 	public static double average (double inputnumber, double otherinput, double inputofinputs){
-		// all the int, double, double above are bascially just like x y z
 			double avg;
 			double addingtogether;
 			addingtogether = inputnumber + otherinput + inputofinputs;
@@ -156,7 +151,7 @@ public class Calculate {
 				
 			}
 			for(int intial = beingfac; beingfac<0; intial--){
-				intial = intial*(intial-1);       
+				intial = intial*(intial-1);
 			//will subtract one from itself and multiply the next number till zero (doesnt multply zero though)
 				return intial;
 			}
@@ -178,7 +173,7 @@ public class Calculate {
 		 int c = b;
 		    b = a%b;
 		    a = c; }
-          int s = Math.abs(a); //cause it must be positive 
+          int s = Math.abs(a);
           	int t = Math.abs(b);
 				return s+t; 
 		}
@@ -206,8 +201,9 @@ public class Calculate {
 				double root2 = (-b)- sqrt(discrmin)/2;  
 				if (root1==root2){
 					int newroot1 = (int) round2(root1); //get rid of the long decimals that are not needed
-					String finalrootboth = Integer.toString(newroot1);// well, we need to return a string
-					return finalrootboth; // or add + "" to make it a string and eliminate the line beforehand
+					String finalrootboth = Integer.toString(newroot1);
+					
+					return finalrootboth;
 				}
 				double newroot2 = round2(root2);
 				double newroot1 = round2(root1);

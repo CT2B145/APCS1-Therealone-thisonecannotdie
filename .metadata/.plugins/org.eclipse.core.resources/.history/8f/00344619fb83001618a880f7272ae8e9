@@ -1,8 +1,4 @@
-/*
- * Mitchell Pon
- * Period 1
- * 
- */
+
 
 public class Calculate {
 
@@ -156,7 +152,7 @@ public class Calculate {
 				
 			}
 			for(int intial = beingfac; beingfac<0; intial--){
-				intial = intial*(intial-1);       
+				intial = intial*(intial-1);
 			//will subtract one from itself and multiply the next number till zero (doesnt multply zero though)
 				return intial;
 			}
