@@ -1,0 +1,205 @@
+/*
+ * Mitchell Pon	
+ * 11/21/16
+ * 1*
+ * 
+ * 
+ * 
+ * 
+ */
+package fracCalc;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class FracCalc {
+
+    public static void main(String[] args) 
+    {	
+//    	Scanner reader = new Scanner(System.in); //Getting input
+//		  // Reading from System.in
+//		String input = reader.nextLine();
+//		System.out.println(produceAnswer(input));
+		System.out.println(produceAnswer("-1_1/2 + 1_1/2")); // test file
+		
+    }
+    
+    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
+    // This function takes a String 'input' and produces the result
+    //
+    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
+    //      e.g. input ==> "1/2 + 3/4"
+    //        
+    // The function should return the result of the fraction after it has been calculated
+    //      e.g. return ==> "1_1/4"
+    public static String produceAnswer(String input)
+    { 
+
+    	
+    		String[] fracEquationHolder = input.split(" ");
+    		String operand1 = fracEquationHolder[0];
+            String operator = fracEquationHolder[1];
+            String operand2 = fracEquationHolder[2];
+            operand1 = operand1.trim();
+            operator = operator.trim();
+            operand2 = operand2.trim(); 
+            
+          int[]operatand1 =  parse(operand1); //sends to convert to ints
+          int[]operatand2 =  parse(operand2); //sends to convert to ints
+           
+          if(input.indexOf("+")>=0||input.indexOf("-")>=0){ //addtion 
+       return addsubtract(operatand1,operatand2,operand1, operand2, operator);
+        //  return operatand1[0]+""+operatand1[1]+""+operatand1[2] +"";
+    }  
+		return "something really went wrong";
+          
+    //    return (Arrays.toString(test)); 
+
+//        	 
+//               }
+//               //return statement3 + ("(Whole:" + whole +" Numerator:" + num +" Denominator:" + dem + ")");
+//               return answer; 
+		
+    }
+public static int[] parse(String inputFraction){
+
+        if((inputFraction.indexOf("_")>=0)&&(inputFraction.indexOf("/")>=0)){//when there is a whole number
+     	   String[] split2 = inputFraction.split("_");
+    	   String wholetemp;
+    	   wholetemp = split2[0];
+    	   String frac = split2[1];
+    	   String[] split3 = frac.split("/");
+    	   String numtemp;
+    	   String demtemp;
+    	   numtemp = split3[0];
+    	   demtemp = split3[1];
+    	   
+
+    	  int whole = Integer.parseInt(wholetemp);
+    	  int num = Integer.parseInt(numtemp);    	  
+    	  int dem = Integer.parseInt(demtemp);
+        return toImproperFrac(whole,num,dem);
+
+       } else if (inputFraction.indexOf("/")>=0){
+    	  String[] split3 = inputFraction.split("/");
+    	  String numtemp = split3[0];
+    	  String demtemp = split3[1];
+    	  
+    	  int[] threePartsofFrac = new int[3];
+    	  int whole = 0;
+    	  int num = Integer.parseInt(numtemp);    	  
+    	  int dem = Integer.parseInt(demtemp);
+    	  
+    	  threePartsofFrac[0] = whole;
+    	  threePartsofFrac[1] = num;
+    	  threePartsofFrac[2] = dem;
+        return threePartsofFrac;
+    	  
+       }else{
+    	  String whole = inputFraction;
+    	  int[] threePartsofFrac = new int[3];;
+    	  int wholeInt = Integer.parseInt(whole);
+    	  threePartsofFrac[0] = wholeInt;
+    	  threePartsofFrac[1] = 0;
+    	  threePartsofFrac[2] = 1;
+          return threePartsofFrac;
+       }
+     //  return statement3 + ("(Whole:" + whole +" Numerator:" + num +" Denominator:" + dem + ")");	
+}
+
+
+public static String addsubtract(int[] operand1,int[] operand2, String op1, String op2,String operator){
+	int[] zeAnswerNumer = new int[3];
+	zeAnswerNumer[0] = 0; //whole number place holder
+	if((operator.indexOf("+")>=0)){
+			if(operand1[2] == operand2[2]){
+				zeAnswerNumer[1] = operand1[1]+operand2[1];
+				int finalnum = zeAnswerNumer[1];
+				int finaldem = operand1[2];	
+					if(finaldem == 1){
+						String numer = Integer.toString(finalnum);
+						return numer;
+					}else if(finalnum ==0){
+						String numer = Integer.toString(finalnum);
+						return numer;
+					}
+				return finalnum+"/"+finaldem;
+			}else{
+				zeAnswerNumer[2] = operand2[2]*operand1[2];
+				operand1[1] = operand1[1]*operand2[2];	
+				operand2[1] = operand2[1]*operand1[2];	
+				zeAnswerNumer[1] = operand1[1]+operand2[1];
+				int finalnum = zeAnswerNumer[1];
+				int finaldem = zeAnswerNumer[2];
+				return finalnum+"/"+finaldem;
+			}
+			
+		}return " something went wrong";
+//	} if (dadadad){
+//			if ((op1.indexOf("-")>=0)&&(op2.indexOf("-")>=0)){
+//				if(operand1[2] == operand2[2]){
+//					zeAnswerNumer[1] = operand1[1]+operand2[1];
+//					int finalnum = zeAnswerNumer[1];
+//					int finaldem = operand1[2];	
+//						if(finaldem == 1){
+//							String numer = Integer.toString(finalnum);
+//							return numer;
+//						}
+//						return finalnum+"/"+finaldem;
+//		
+//			}else if ((op1.indexOf("-")>=0)){
+//				if(operand1[2] == operand2[2]){
+//					zeAnswerNumer[1] = operand2[1]-operand1[1];
+//					int finalnum = zeAnswerNumer[1];
+//					int finaldem = operand1[2];
+//						if(finaldem == 1){// checks to see if there is a whole number
+//							if(operand1[1]<=operand2[1]){ //checks to see whether the output needs to be negative
+//							String numer = Integer.toString(finalnum);
+//							return numer;
+//						}else{
+//							return "-"+finalnum;
+//						}
+//					}	
+//					if(operand1[1]<=operand2[1]){ //checks to see whether the output needs to be negative
+//						return finalnum+"/"+finaldem;
+//					}else{
+//						return "-"+finalnum+"/"+finaldem;		
+//					}
+//			}else{
+//				zeAnswerNumer[2] = operand2[2]*operand1[2];
+//				operand1[1] = operand1[1]*operand2[2];	
+//				operand2[1] = operand2[1]*operand1[2];	
+//				zeAnswerNumer[1] = operand2[1]-operand1[1];
+//				int finalnum = zeAnswerNumer[1];
+//				int finaldem = zeAnswerNumer[2];
+//				return "-"+finalnum+"/"+finaldem;
+//	}
+//			
+//
+//	return "something went wrong";
+
+
+} // this is the last bracket
+
+public static int[] toImproperFrac(int whole, int num, int dem){    	
+	  int[] threePartsofFrac = new int[3];
+	  if (whole<0){
+	  num = (whole*dem)+(num*-1); 
+	  threePartsofFrac[0] = 0;
+	  threePartsofFrac[1] = num;
+	  threePartsofFrac[2] = dem;
+    return threePartsofFrac;
+	  }	else{
+		  num = (whole*dem)+(num); 
+		  threePartsofFrac[0] = 0;
+		  threePartsofFrac[1] = num;
+		  threePartsofFrac[2] = dem;
+	    return threePartsofFrac;
+	  }
+    	
+    }
+}
+
+
+    // TODO: Fill in the space below with any helper methods that you think you will need
+    
