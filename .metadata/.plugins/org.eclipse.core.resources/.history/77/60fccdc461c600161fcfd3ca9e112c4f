@@ -1,0 +1,310 @@
+
+/*
+ * Mitchell Pon 
+ * 11/21/16
+ * 1*
+ * 
+ * 
+ * 
+ * 
+ */
+package fracCalc;
+ // resubmitted to reduce lines from 400 down to 310
+import java.util.Arrays;
+import java.util.Scanner;
+ 
+public class FracCalc {
+    public static void main(String[] args) {   
+    System.out.println("Enter your equation, but please add spaces between the operator and the fraction");
+    Scanner input = new Scanner(System.in);
+    String userInput = input.nextLine();
+  while (userInput.equals("quit")!= true){ // if the user types quit, the program kills itself
+	  System.out.println(produceAnswer(userInput)); 
+	  userInput = input.nextLine(); 
+    }
+} public static String produceAnswer(String input){ //job is to parse the fractions into an array from the inputted stirng
+        //====================================================//
+            String[] fracEquationHolder = input.split(" "); // holds the fractions and operator
+            String operand1 = fracEquationHolder[0];
+            String operator = fracEquationHolder[1];
+            String operand2 = fracEquationHolder[2];                 
+            operand1 = operand1.trim(); //remove the unneeded spaces
+            operator = operator.trim();
+            operand2 = operand2.trim(); 
+          int[]operatand1 =  parse(operand1); //sends to convert to ints
+          int[]operatand2 =  parse(operand2); //sends to convert to ints
+        //====================================================//  
+       if(operand2.indexOf("/0")>=0||operand1.indexOf("/0")>=0){
+              return "Error: Cannot divide by zero.";  // check if there is zero in the denominator
+       } if(input.indexOf(" + ")>=0||input.indexOf(" - ")>=0){ //sends to add or subtract
+       return addsubtract(operatand1,operatand2,operand1, operand2, operator);      
+    }  else if(input.indexOf(" * ")>=0||input.indexOf(" / ")>=0){ // sends to divide or multiply
+       return multiplydivide(operatand1,operatand2,operand1, operand2, operator);
+    }else{
+        return "Error: Input is the wrong format"; // catch anything that is inputted incorrectly     
+    }
+    }
+public static int[] parse(String inputFraction){ // changes string input to ints
+    //puts the who number as an int
+    int[] threePartsofFrac = new int[3];
+    threePartsofFrac[0] = 0;
+        if((inputFraction.indexOf("_")>=0)&&(inputFraction.indexOf("/")>=0)){//when there is a whole number
+          //seperates the parts of fraction into a string array
+           String[] split2 = inputFraction.split("_");
+           String wholetemp;
+           wholetemp = split2[0];
+           String frac = split2[1];
+           String[] split3 = frac.split("/");
+           String numtemp;
+           String demtemp;
+           numtemp = split3[0];
+           demtemp = split3[1];
+           //extracts the ints here
+          int whole = Integer.parseInt(wholetemp);
+          int num = Integer.parseInt(numtemp);        
+          int dem = Integer.parseInt(demtemp);
+          //sends toImproperFrac to convert to improperfraction for math later 
+          return toImproperFrac(whole,num,dem); 
+       } else if (inputFraction.indexOf("/")>=0){
+           //seperates the parts of fraction into a string array, returns to produceanswer
+    	  String[] split3 = inputFraction.split("/");
+          String numtemp = split3[0];
+          String demtemp = split3[1];
+          // extracts the ints here 
+          int num = Integer.parseInt(numtemp);        
+          int dem = Integer.parseInt(demtemp);
+          //returns an array for the multiple ints, returns to produceanswers
+          threePartsofFrac[1] = num;
+          threePartsofFrac[2] = dem;
+        return threePartsofFrac;         
+       }else{
+    	   //extracts the whole number
+          String whole = inputFraction;
+          //puts the who number as an int
+          int wholeInt = Integer.parseInt(whole);
+          //stores it in to send to produceanswer
+          threePartsofFrac[1] = wholeInt;
+          threePartsofFrac[2] = 1;
+          return threePartsofFrac;
+       }
+}
+public static String multiplydivide(int[] operand1,int[] operand2, String op1, String op2,String operator){
+    int[] zeAnswerNumer = new int[3]; // holds the final answer variables
+    zeAnswerNumer[0] = 0; //whole number place holder
+    if(operator.indexOf("*")>=0){
+        zeAnswerNumer[1] = operand1[1]*operand2[1]; 
+        zeAnswerNumer[2] = operand1[2]*operand2[2];
+        int finalnum = zeAnswerNumer[1]; //numerator
+        int finaldem = zeAnswerNumer[2]; // denominator
+        int absnum = Math.abs(finalnum);//to check if there is an improper fraction
+        int absdem = Math.abs(finaldem);//to check if there is an improper fraction
+        String numer = Integer.toString(finalnum);
+        if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+           return numer;
+        }else{
+    	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+           }
+    }else if(operator.indexOf("/")>=0){
+    	 zeAnswerNumer[1] = operand1[1]*operand2[2]; 
+         zeAnswerNumer[2] = operand1[2]*operand2[1];
+         int finalnum = zeAnswerNumer[1];
+         int finaldem = zeAnswerNumer[2]; 
+         int absnum = Math.abs(finalnum);
+         int absdem = Math.abs(finaldem);
+         String numer = Integer.toString(finalnum);
+         if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+             return numer;
+          }else{
+      	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+             }
+    }
+	return "something went wrong"; 
+} 
+public static String addsubtract(int[] operand1,int[] operand2, String op1, String op2,String operator){ //adds or subtracts numbers
+    int[] zeAnswerNumer = new int[3]; // holds the final answer variables
+    zeAnswerNumer[0] = 0; //whole number place holder
+    if((operator.indexOf("+")>=0)){ // if there is an addition sign, it will add
+            if(operand1[2] == operand2[2]){//checks to see if denominators are the same
+                zeAnswerNumer[1] = operand1[1]+operand2[1]; 
+                int finalnum = zeAnswerNumer[1];
+                int finaldem = operand1[2];
+                int absnum = Math.abs(finalnum);//to check if there is an improper fraction
+                int absdem = Math.abs(finaldem);//to check if there is an improper fraction
+                String numer = Integer.toString(finalnum);
+                if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                   return numer;
+                }else{
+            	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                   }       
+            }else{ //creates the same denominator for both fractions
+                zeAnswerNumer[2] = operand2[2]*operand1[2];
+                operand1[1] = operand1[1]*operand2[2];  
+                operand2[1] = operand2[1]*operand1[2];  
+                zeAnswerNumer[1] = operand1[1]+operand2[1];
+                int finalnum = zeAnswerNumer[1];
+                int finaldem = zeAnswerNumer[2];
+                int absnum = Math.abs(finalnum);//to check if there is an improper fraction
+                int absdem = Math.abs(finaldem);//to check if there is an improper fraction
+                String numer = Integer.toString(finalnum);
+                if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                   return numer;
+                }else{
+            	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                   }
+            }
+    }else if((operator.indexOf("-")>=0)){ //subratraction
+            if ((op1.indexOf("-")>=0)&&(op2.indexOf("-")>=0)){
+                if(operand1[2] == operand2[2]){
+                    zeAnswerNumer[1] = operand1[1]+(operand2[1]*-1);
+                    int finalnum = zeAnswerNumer[1];
+                    int finaldem = operand1[2]; 
+                    int absnum = Math.abs(finalnum);
+                    int absdem = Math.abs(finaldem);
+                    String numer = Integer.toString(finalnum);
+                    if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                       return numer;
+                    }else{
+                	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                       }
+                }else{//creates the same denominator for both fractions
+                    zeAnswerNumer[2] = operand2[2]*operand1[2];
+                    operand1[1] = operand1[1]*operand2[2];  
+                    operand2[1] = operand2[1]*operand1[2];  
+                    zeAnswerNumer[1] = operand1[1]+(operand2[1]*-1);
+                    int finalnum = zeAnswerNumer[1];
+                    int finaldem = zeAnswerNumer[2];
+                    int absnum = Math.abs(finalnum);
+                    int absdem = Math.abs(finaldem);
+                    String numer = Integer.toString(finalnum);
+                    if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                       return numer;
+                    }else{
+                	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                       }
+             	}
+            }else if ((op1.indexOf("-")>=0)){ // checks to see if there is a negative in the first operand
+                if(operand1[2] == operand2[2])
+                        zeAnswerNumer[1] = operand1[1]-operand2[1];
+                        int finalnum = zeAnswerNumer[1];
+                        int finaldem = operand1[2]; 
+                        int absnum = Math.abs(finalnum);
+                        int absdem = Math.abs(finaldem);
+                        String numer = Integer.toString(finalnum);
+                        if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                           return numer;
+                        }else{
+                    	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                           }
+                }else{//creates the same denominator for both fractions
+                    zeAnswerNumer[2] = operand2[2]*operand1[2];
+                    operand1[1] = operand1[1]*operand2[2];  
+                    operand2[1] = operand2[1]*operand1[2];  
+                    zeAnswerNumer[1] = operand1[1]-operand2[1];
+                    int finalnum = zeAnswerNumer[1];
+                    int finaldem = zeAnswerNumer[2];
+                    int absnum = Math.abs(finalnum);
+                    int absdem = Math.abs(finaldem);
+                    String numer = Integer.toString(finalnum);
+                    if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                       return numer;
+                    }else{
+                	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                       }
+                	}
+            }else if ((op2.indexOf("-")>=0)){ // checks to see if there is a negative in the sencond operand
+                if(operand1[2] == operand2[2]){
+                    zeAnswerNumer[1] = operand1[1]+operand2[1];
+                    int finalnum = zeAnswerNumer[1];
+                    int finaldem = operand1[2]; 
+                    int absnum = Math.abs(finalnum);
+                    int absdem = Math.abs(finaldem);
+                    String numer = Integer.toString(finalnum);
+                    if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                       return numer;
+                    }else{
+                	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                       }
+                }else{
+                    zeAnswerNumer[2] = operand2[2]*operand1[2];
+                    operand1[1] = operand1[1]*operand2[2];  
+                    operand2[1] = operand2[1]*operand1[2];  
+                    zeAnswerNumer[1] = operand1[1]-operand2[1];
+                    int finalnum = zeAnswerNumer[1];
+                    int finaldem = zeAnswerNumer[2];
+                    int absnum = Math.abs(finalnum);
+                    int absdem = Math.abs(finaldem);
+                    String numer = Integer.toString(finalnum);
+                    if(finalnum ==0){//if there is a zero in the numerator, its zero overall
+                       return numer;
+                    }else{
+                	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                       }
+                }
+            }else{//if there are no negatives
+                if(operand1[2] == operand2[2]){ // if there is the same denominator
+                zeAnswerNumer[1] = operand1[1]-operand2[1];
+                int finalnum = zeAnswerNumer[1];
+                int finaldem = operand1[2]; 
+                int absnum = Math.abs(finalnum);
+                int absdem = Math.abs(finaldem);
+                String numer = Integer.toString(finalnum);
+                if(finaldem == 1 || finalnum ==0){//if there is a zero in the numerator, its zero overall
+                    return numer;
+                 }else{
+             	return answerSimplifier(absnum, absdem, finalnum, finaldem);  
+                    }    
+                }  }
+	return "Something went wrong";            
+} // this is the last bracket
+public static int[] toImproperFrac(int whole, int num, int dem){        // converts mixed numbers into improper fraction
+      int[] threePartsofFrac = new int[3];
+      threePartsofFrac[0] = 0;
+      threePartsofFrac[2] = dem;
+     if (whole<0){ //checks to see if there is a negative
+      num = (whole*dem)+(num*-1); 
+      threePartsofFrac[1] = num;
+      return threePartsofFrac;
+    }else{
+        num = (whole*dem)+(num);  
+         threePartsofFrac[1] = num;
+         return threePartsofFrac;
+    }      
+}public static String gcf(int a, int b){ //finding the greatest common factor and return a simplifed fraction
+	int num = a; //numerator
+	int dem = b; //denominator	
+	while(a!=0 && b!=0){
+		 int c = b;
+		    b = a%b;
+		    a = c; }
+		int gcf = (a+b);
+		num = Math.abs(num/gcf);
+		dem=Math.abs(dem/gcf);
+	return num+"/"+dem;	
+		}
+public static String toMixedNum (int a, int j){// finds the improper fraction to a mixed number
+	double firstnumb = a/j;
+	int firstnumb1 = (int)firstnumb;
+	int numb = a%j;
+	String finalMixed = firstnumb1 + "_" + gcf(numb,j);
+	if(numb == 0){ //if there is no denominator value, it returns as a whole number
+		return firstnumb1 +"";	
+	}else if(numb<0&&j<0){ //if there is a negative in the denominator and the numerator
+		numb = Math.abs(numb);
+		j = Math.abs(j);		
+		return finalMixed;
+	}else{
+		return finalMixed;
+	}
+}
+public static String answerSimplifier (int absnum, int absdem, int finalnum, int finaldem){
+	if( finaldem == finalnum){
+       return "1";
+   } else if(absnum>absdem){
+   	return toMixedNum(finalnum,finaldem);
+   } else if(absnum<absdem&&finalnum<0){ //handles negative fractions that are not mixed
+   	return "-"+gcf(finalnum,finaldem);
+   } else if(absnum<absdem&&(finalnum<0||finaldem<0)){
+       return "-"+gcf(finalnum,finaldem); 
+   } return gcf(finalnum,finaldem);
+}
+}  

@@ -1,0 +1,61 @@
+package pleasework;
+
+import java.util.Scanner;
+
+/*
+ * Mitchell Pon
+ * 9/30/16
+ * 1*
+ * 
+ */
+public class ProcessingNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int next2 = 0; // the total sum of even numbers
+		
+		Scanner num = new Scanner(System.in);
+		System.out.println("How many numbers are you going to enter here?");
+		int totalNum = num.nextInt(); // how many numbers does the user want to find max and min out of
+		System.out.println("Print a random number here, just nothing above 120 cause it will crash. Don't panic, it will not be calculated.");
+		// It's weird here, but I got it to work. I am not changing something once it finally works :P
+		int min = num.nextInt(); // Lower number out of the given from user
+		int max = 0; // Max number out of the numbers given by user input
+		int maxEven = 0; //Max number out of the numbers that are even
+		
+		
+		System.out.println("Please Enter Da Number(s): ");
+		
+	for(int i = 1;i<=totalNum ;i++){
+		
+		int next = num.nextInt();// each number that is inputted by user that is used for max, min, and even calculating
+		
+		if(next>max){
+			max = next;
+			
+		}
+		if(next<min){
+				min = next;	
+				
+		}
+			
+		if(next%2 == 0){
+			next2  = next2 + next; 
+			if(next>maxEven){
+				maxEven = next;
+			}
+			
+		}
+		
+			
+	}
+	System.out.println("Sum of even numbers: " + next2);
+	System.out.println("This is the min number: " + min);
+	System.out.println("This is the max number: " +  max);
+	System.out.println("This is the max even number: " +  maxEven);
+	
+	}
+	
+	
+}

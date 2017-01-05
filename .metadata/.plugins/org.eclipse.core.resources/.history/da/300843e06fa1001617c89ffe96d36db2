@@ -1,0 +1,124 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Split 
+{
+
+	public static void main(String[] args) 
+	{Scanner reader = new Scanner(System.in);
+		  // Reading from System.in
+		System.out.println("What if it's a fancy sandwich with multiple pieces of bread? ");
+		String n = reader.nextLine();
+//		String formatedString = StringSplit(n).toString()
+//	    .replace(",", "")  //remove the commas
+//	    .replace("[", "")  //remove the right bracket
+//	    .replace("]", "")  //remove the left bracket
+//	    .trim();           //remove trailing spaces from partially initialized arrays
+//		
+		System.out.println("An awesome Zane's " +  (StringSplit(n)  + " sandwich."));
+		System.out.println(whatInSandwich(n));
+//		System.out.print(StringSplit(n));
+
+		
+		//String.split();
+		//It's a method that acts on a string, <StringName>.split(<String sp>);
+		//Where sp is the string where the string splits
+		//And it returns an array
+		// Example: "I like apples!".split(" "); 
+		//		it will split at spaces and return an array of ["I","like","apples!"]
+		// Example 2: "I really like really red apples"split("really")
+		//		it will split at the word "really" and return an array of ["I "," like "," apples!"]
+		
+		//play around with String.split! what happens if you "I reallyreally like apples".split("really") ?
+	}
+		
+		//Your task:
+		/*Write a method that take in a string like "applespineapplesbreadlettucetomatobaconmayohambreadcheese" describing a sandwich
+		 * use String.split to split up the sandwich by the word "bread" and return what's in the middle of the sandwich and ignores what's on the outside
+		 * What if it's a fancy sandwich with multiple pieces of bread?
+		*/
+	public static String StringSplit(String incomingSandwich){
+		if(incomingSandwich.indexOf("bread")<0||incomingSandwich.indexOf("bread")==incomingSandwich.lastIndexOf("bread"))
+			return "Not a sandwich!";
+		String madeSandwich=incomingSandwich.substring(incomingSandwich.indexOf("bread"), incomingSandwich.lastIndexOf("bread"));
+		String split[] =madeSandwich.split("bread");
+		String answer="";
+		for(int i=1;i<split.length;i++)
+					answer=answer+split[i];
+		if (answer.trim().length()==0)
+			return "What is this? Doughy pizza? Idiots, this is Brookyln and THIS IS NOT A SANDWICH!!";
+		return answer;
+	}
+//==============================================================FAILED CODE GOSH DARN IT V.5==========--====================
+//		String[] parts = n1.split("bread");
+//		Scanner reader = new Scanner(System.in);
+//		while (parts.length < 2){
+//			System.out.println("Please make me a sandwich");
+//			String n3 = reader.nextLine();
+//			String[] parts2 = n3.split("bread");
+//			parts = parts2;
+//		String part1 = parts[0]; 
+//		String part2 = parts[1];
+//=========================Failed Code VVVVVV Version .4=======================================================================================
+//		int countBread=0;
+//		for(int i=0; i<n1.length()-6;i++){
+//			if (n1.substring(i,i+4).equals("bread")){
+//				countBread+=1;
+//			}
+//		
+//		if(countBread<2){
+//				System.out.println("This is not a sandwich");
+//				return "Gracias por la sandwich.";
+//		}else{
+//				System.out.println("This is clearly a great sandwich");
+//				return "Gracias por la sandwich.";
+//			
+//		}
+//		}
+//		return "It works!";
+//		}
+//		
+//	}
+//		String[] parts3 = n1.split("bread");
+//		
+//	
+//		return parts3;
+//		
+//	}
+	
+//===================================================================================================================================
+
+
+
+
+//Your task pt 2:
+		/*Write a method that take in a string like "apples pineapples bread lettus tomato bacon mayo ham bread cheese" describing a sandwich
+		 * use String.split to split up the sandwich at the spaces, " ", and return what's in the middle of the sandwich and ignores what's on the outside
+		 * Again, what if it's a fancy sandwich with multiple pieces of bread?
+		*/
+public static String whatInSandwich(String statement){
+ // splits at bread, deletes spaces, but not if theres 3 or more
+        if(statement.indexOf("bread") >= 0 && statement.lastIndexOf("bread") != statement.indexOf("bread"))
+        {
+            if (statement.indexOf("bread") >= 0 && statement.lastIndexOf("bread", statement.lastIndexOf("bread") - 1) < statement.lastIndexOf("bread") && statement.lastIndexOf("bread", statement.lastIndexOf("bread") - 1) > statement.indexOf("bread"))
+            {
+                return ("YOU ARE SUPPOSED TO USE TWO SLICES OF BREAD! THIS IS NOT NEW \" FREAKING \" YORK!!!");
+            }
+            else if(statement.indexOf("bread") >= 0 && statement.lastIndexOf("bread") == statement.lastIndexOf("bread"))
+            {
+               String[] split = statement.split("bread");
+               String statement2 = split[1];
+               statement2 = statement2.trim();
+               String[] split2 = statement2.split(" ");
+               return(Arrays.toString(split2));
+            }
+       }
+       else
+       {
+           return("This aint a sandwich");
+       }
+		return "cookies";
+        
+   }
+}
+

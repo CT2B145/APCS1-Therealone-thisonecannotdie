@@ -1,0 +1,40 @@
+package pleasework;
+
+import java.util.Scanner;
+
+/*
+ * Mitchell Pon
+ * 9/30/16
+ * 1*
+ * 
+ */
+public class ProcessingNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner num = new Scanner(System.in);
+		
+		int next2 = 0;
+		int max = 0;
+		int min = 0;
+		
+	for(int i = 1;i<=16 ;i++){
+		int next = num.nextInt();
+		if(next>max){
+			max = next;
+			System.out.println("This is the max number: " +  max);
+			}
+		else if(min<next){
+			min = next;
+			System.out.println("This is the min number: " + min);
+		}
+			
+		else if(next%2 == 0){
+			next2  = next2 + next; 
+			System.out.println("Sum of even numbers: " + next2);
+			
+		}
+			
+		}
+
+	}
